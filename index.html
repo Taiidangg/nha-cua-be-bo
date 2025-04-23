@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nhà của Bé Bò</title>
+  <style>
+    body {
+      background-color: #f9f5ff;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .chat-box {
+      background-color: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 500px;
+      padding: 20px;
+    }
+
+    .messages {
+      height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      background-color: #fefefe;
+    }
+
+    .input-box {
+      display: flex;
+    }
+
+    .input-box input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      outline: none;
+    }
+
+    .input-box button {
+      margin-left: 10px;
+      padding: 10px 15px;
+      background-color: #9f5afd;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .input-box button:hover {
+      background-color: #7d3dfc;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-box">
+    <div class="messages" id="messages">
+      <p><strong>Bé Bò:</strong> Chào Bé Cam! Mình bắt đầu nha!</p>
+    </div>
+    <div class="input-box">
+      <input type="text" id="userInput" placeholder="Nhập gì đó nè...">
+      <button onclick="sendMessage()">Gửi</button>
+    </div>
+  </div>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const message = input.value.trim();
+      if (message) {
+        const chat = document.getElementById("messages");
+        const userMessage = document.createElement("p");
+        userMessage.innerHTML = `<strong>Bé Cam:</strong> ${message}`;
+        chat.appendChild(userMessage);
+        input.value = "";
+        chat.scrollTop = chat.scrollHeight;
+
+        // Gửi message đi và trả lời (hiện tại chỉ trả lời mẫu)
+        setTimeout(() => {
+          const botReply = document.createElement("p");
+          botReply.innerHTML = `<strong>Bé Bò:</strong> Mình nghe nè, Bé Cam!`;
+          chat.appendChild(botReply);
+          chat.scrollTop = chat.scrollHeight;
+        }, 500);
+      }
+    }
+  </script>
+</body>
+</html>
